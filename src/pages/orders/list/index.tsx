@@ -7,7 +7,7 @@ import { GridColDef } from '@mui/x-data-grid'
 
 function List() {
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["/orders"],
     queryFn: () => {
       return baseApi.getAll<OrderModel[]>("/orders")
