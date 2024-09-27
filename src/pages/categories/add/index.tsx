@@ -3,11 +3,15 @@ import React, { useState } from 'react'
 import GInput from '../../../components/core-components/input'
 import GButton from '../../../components/core-components/button'
 import { baseApi } from '../../../api/baseApi'
+import { useNavigate } from 'react-router-dom'
 
 function Add() {
 
   const [name, setname] = useState("")
   const [description, setdescription] = useState("")
+
+
+  const navigate = useNavigate()
 
 
   const add = () => {
@@ -18,7 +22,7 @@ function Add() {
 
     baseApi.post("/categories", newCategory)
       .then((response) => {
-        console.log(response)
+        navigate("/categories")
       })
       .catch((error) => {
         console.log(error)

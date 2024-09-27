@@ -4,6 +4,8 @@ import { baseApi } from '../../../api/baseApi'
 import GDataGrid from '../../../components/core-components/data-grid'
 import { OrderModel } from './models/OrderModel'
 import { GridColDef } from '@mui/x-data-grid'
+import { useNavigate } from 'react-router-dom'
+import GButton from '../../../components/core-components/button'
 
 function List() {
 
@@ -13,6 +15,8 @@ function List() {
       return baseApi.getAll<OrderModel[]>("/orders")
     }
   })
+
+  const navigate = useNavigate()
 
   const columns: GridColDef[] = [
     {
@@ -39,6 +43,14 @@ function List() {
       field: 'requiredDate',
       headerName: 'Required Date',
       flex: 1
+    },
+    {
+      field:"detail",
+      headerName:"Detail",
+      flex:1,
+      renderCell: (params) => (
+        <GButton onClick={() => navigate(`/orders/detail/${params.row.id}`)}>Detail</GButton>
+      )
     }
   ]
 

@@ -29,7 +29,7 @@ function List() {
           field: 'actions', headerName: 'Actions', flex: 2,
           //go to detail
           renderCell: (params) => (
-            <button onClick={() => navigate(`/categories/${params.row.id}`)}>Detail</button>
+            <GButton onClick={() => navigate(`/categories/detail/${params.row.id}`)}>Detail</GButton>
           )
         }
       ]}
